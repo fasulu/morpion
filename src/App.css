@@ -17,7 +17,7 @@
   .square {
     background: #fff;
     border: 1px solid #999;
-    float: left;
+    /* float: left; */
     font-size: 50px;
     font-weight: bold;
     margin-right: -1px;
@@ -64,10 +64,8 @@
   }
   /* Game */
   .game {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    
+    /* transform: translate(-50%, -50%); */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -85,8 +83,7 @@
     to {
       transform: rotate(360deg);
     }
-    flex-direction: row;
-    margin: 0 auto;
+    
   }
 
 
@@ -103,3 +100,18 @@ ul {
 .status {
   margin-bottom: 10px;
 }
+
+.player {
+  text-align: center;
+}
+
+.bg-image{
+  
+  /* background: url("./Components/espace.jpg") no-repeat center cover ; */
+  
+  background: url("https://www.entreprendre.fr/wp-content/uploads/AdobeStock_2015532431.jpg") no-repeat center  ;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+

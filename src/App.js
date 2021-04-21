@@ -13,8 +13,8 @@ class App extends React.Component {
      
        
       <div className = "bg-image"> 
-        <h1 className = "player">player one (X): </h1>
-        <h1 className = "player">player two (O): </h1>
+        <h1 className = "player">player one (X) </h1>
+        <h1 className = "player">player two (O) </h1>
         <Game />
       </div>
      

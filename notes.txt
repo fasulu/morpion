@@ -1,0 +1,12 @@
+dans la fonction calculatewater on doit retourner 3 choses : 
+-un gagnant 
+-finished si toute les cases du tableau sont cochés
+-on continuent si y a pas de gagnant
+
+
+ensuite on appelant la fonction calculatewater avec les 3 conditions : 
+gagnant-continuent-finished
+
+chercher l'array sur lequel faire une conditions
+chercher une méthode quo vérifie si l'élément est dans l'array ou pas
+

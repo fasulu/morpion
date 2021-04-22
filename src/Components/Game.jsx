@@ -13,7 +13,8 @@ class Game extends React.Component {
             history: [
                 { squares: Array(9).fill(null) }
             ],
-            status: 'Next player is X'
+            status: 'Next player is: X'
+
         }
     }
 
@@ -22,26 +23,22 @@ class Game extends React.Component {
         const current = history[history.length - 1];
         const squares = current.squares.slice();
 
-        // console.log("this.state.xIsNext" , this.state.xIsNext);
-
-
         squares[i] = this.state.xIsNext ? 'X' : 'O';
 
         const status = this.calculateWinner(squares)
 
-        console.log("status", status);
-        // console.log("this.state.xIsNext 2" , this.state.xIsNext);
+        if (status === 'Next player is: ') {
 
-        if (status === "Next player is: ") {
             this.setState({
                 history: history.concat({
                     squares: squares
                 }),
-                status: status + (this.state.xIsNext ? '0' : 'X'),
+                status: status + (this.state.xIsNext ? 'O' : 'X'),
                 xIsNext: !this.state.xIsNext,
                 stepNumber: history.length
             });
         } else {
+
             this.setState({
                 status: status,
                 history: history.concat({
@@ -50,12 +47,13 @@ class Game extends React.Component {
                 stepNumber: history.length
             })
         }
+
     }
 
     jumpTo(step) {
         this.setState({
             stepNumber: step,
-            
+
         })
     }
 
@@ -76,13 +74,9 @@ class Game extends React.Component {
         for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
             if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c]) {
-                // let winner = squares [a]
-                status = "The winner is " + squares[a]
-                // return squares[a];
+                status = "The winner is " + squares[a] 
             }
         }
-
-       
 
         if (status === '') {
             if (!squares.includes(null)) {
@@ -91,47 +85,39 @@ class Game extends React.Component {
                 status = "Next player is: "
             }
         }
-
-        return status
+        
+        return status;
 
     }
 
-    
-    
-    
-    
-    
-    
     render() {
 
         console.log("test", this.state.status.indexOf("Next Player is"));
 
-        if (this.state.status.indexOf("Next player is") === -1) {
-            return <h1 className="player">{this.state.status}  </h1> 
+        if (this.state.status.indexOf("Next player is") == -1) {
+            if( this.state.status === "The winner is O" || this.state.status === "The winner is X" ){
+                return (
+                <div id= "image-vainquer">
+                    <h1 className="player">{this.state.status}</h1>
+                    <div><img src="https://p3.storage.canalblog.com/39/25/624677/127227270.gif" alt="Gif feu d'artifice"/>
+                    <img src="https://p3.storage.canalblog.com/39/25/624677/127227270.gif" alt="Gif feu d'artifice"/></div>
+                </div>)
+            
+            }else if(this.state.status === "It's a draw" ){
+
+            }
+            return <h1 className="player">{this.state.status}</h1>
         } else {
 
             const history = this.state.history
-            // const current = history[this.state.stepNumber]
             const current = history[history.length - 1]
 
-            // const winner = this.calculateWinner()
 
             const moves = history.map((step, move) => {
                 const desc = move ? 'Go to #' + move : 'Start the game';
-            
 
-
-                return (
-                    <li key={move} >
-
-                        <button onClick={() => { this.jumpTo(move) }}>
-                            {desc}
-                        </button>
-
-                    </li>
-                )
             })
-            
+
             return (
 
                 <div className="game">
@@ -143,13 +129,11 @@ class Game extends React.Component {
                     <div className="game-info">
 
                         <div className="winner">{this.state.status}</div>
-                        <ul>{moves} </ul>
 
                     </div>
 
                 </div>
-            )
-        }
+            )}
     }
 
 }
@@ -160,16 +144,6 @@ export default Game
 
 
 
-
-
-
-
-
-
-
-            
-
-           
 
 
 

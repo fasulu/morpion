@@ -55,7 +55,7 @@ class Game extends React.Component {
     jumpTo(step) {
         this.setState({
             stepNumber: step,
-            // xIsNext : (step % 2) === 0
+            
         })
     }
 
@@ -82,6 +82,8 @@ class Game extends React.Component {
             }
         }
 
+       
+
         if (status === '') {
             if (!squares.includes(null)) {
                 status = "It's a draw"
@@ -94,35 +96,29 @@ class Game extends React.Component {
 
     }
 
-    // onChangeWinner = (winner) => {
-
-    //     this.setState({
-    //         status: 'Winner is ' + winner
-    //     })
-    // }
-
-    // onChangePlayer = () => {
-    //     this.setState({
-    //         status: 'Next Player is ' + (this.state.xIsNext ? 'X' : 'O')
-    //     })
-    // }
-
-
-
+    
+    
+    
+    
+    
+    
     render() {
 
         console.log("test", this.state.status.indexOf("Next Player is"));
 
-        if (this.state.status.indexOf("Next player is") == -1) {
-            return <h1 className="player">Finished</h1>
+        if (this.state.status.indexOf("Next player is") === -1) {
+            return <h1 className="player">{this.state.status}  </h1> 
         } else {
 
             const history = this.state.history
             // const current = history[this.state.stepNumber]
             const current = history[history.length - 1]
 
+            // const winner = this.calculateWinner()
+
             const moves = history.map((step, move) => {
                 const desc = move ? 'Go to #' + move : 'Start the game';
+            
 
 
                 return (
@@ -135,35 +131,7 @@ class Game extends React.Component {
                     </li>
                 )
             })
-
-            // let status;
-
-            // if (winner) {
-            //     status = 'Winner is ' + winner
-            // }
-            // else if (!winner) {
-            //     status = 'Next Player is ' + (this.state.xIsNext ? 'X' : 'O');
-            // }
-            // else {
-
-            //     status = 'Nobody win'
-            // }
-
-
-            // if (winner) {
-            //     this.onChangeWinner(winner)
-            // }
-
-            // else if (winner) {
-            //     this.onChangePlayer()
-
-            // } 
-            // else {
-            //     status = 'Nobody win'
-            // }
-
-
-
+            
             return (
 
                 <div className="game">
@@ -196,6 +164,12 @@ export default Game
 
 
 
+
+
+
+            
+
+           
 
 
 

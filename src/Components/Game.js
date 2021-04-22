@@ -104,6 +104,8 @@ class Game extends React.Component {
                      alt="Gif feu d'artifice"/></div>
                     
                 </div> )
+            } else {
+                return <h1 className="player">{this.state.status}</h1>
             }
             
         } else {

@@ -124,11 +124,29 @@ ul {
   font-size: 35px;
   font-weight: bold;
   color:#dfe2ea ;
+  margin-bottom: 25px;
+  margin-left: -21px;
 }
 
 .reset {
   background-color: wheat;
-    margin-left: 164px;
+    margin-left: 566px;
     margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 12px;
+    font-size: 20px;
 }
+
+#image-vainquer div {
+  margin-left: 370px;
+ 
+}
+#image-vainquer img {
+  width: 270px;
+ 
+}
+
+
+
+
 

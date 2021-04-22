@@ -80,7 +80,7 @@ class Game extends React.Component {
 
         if (status === '') {
             if (!squares.includes(null)) {
-                status = "It's a draw"
+                status = "It's a Draw Game "
             } else {
                 status = "Next player is: "
             }
@@ -95,7 +95,17 @@ class Game extends React.Component {
         console.log("test", this.state.status.indexOf("Next Player is"));
 
         if (this.state.status.indexOf("Next player is") === -1) {
-            return <h1 className="player">{this.state.status}  </h1>
+            if( this.state.status === "The winner is O" || this.state.status === "The winner is X" ){
+                return (
+                <div id= "image-vainquer">
+                    <h1 className="player">{this.state.status}</h1>
+                    <div><img src="https://p3.storage.canalblog.com/39/25/624677/127227270.gif" 
+                     alt="Gif feu d'artifice"/><img src="https://p3.storage.canalblog.com/39/25/624677/127227270.gif" 
+                     alt="Gif feu d'artifice"/></div>
+                    
+                </div> )
+            }
+            
         } else {
 
             const history = this.state.history

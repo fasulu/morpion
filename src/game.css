@@ -1,0 +1,6 @@
+.cracker {
+    background-image: url("/src/image/cracker.gif");
+    background-size: cover;
+    width: 50%;
+    height: 240px; 
+}

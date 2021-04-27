@@ -1,6 +1,6 @@
 import React from "react"
 import Board from "./Board"
-
+import audio from '../sound/cracker.mp3';
 
 class Game extends React.Component {
 
@@ -13,7 +13,8 @@ class Game extends React.Component {
             history: [
                 { squares: Array(9).fill(null) }
             ],
-            status: 'Next player is: X'
+            status: 'Next player is: X',
+            winner: "no"
         }
     }
 
@@ -27,6 +28,8 @@ class Game extends React.Component {
         const status = this.calculateWinner(squares)
 
         console.log("status", status);
+
+        if (status.search("winner") === 4) { } else { }
 
         if (status === "Next player is: ") {
             this.setState({
@@ -69,6 +72,7 @@ class Game extends React.Component {
 
         let status = ''
 
+
         for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
             if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c]) {
@@ -76,18 +80,28 @@ class Game extends React.Component {
                 status = "The winner is " + squares[a]
 
             }
+
         }
 
         if (status === '') {
             if (!squares.includes(null)) {
-                status = "It's a draw"
+                status = "It's a Draw Game "
             } else {
                 status = "Next player is: "
             }
+
+        }
+
+        if (this.state.winner === "yes") {
+            console.log("the winner is ", this.state.winner)
         }
 
         return status
 
+    }
+
+    playAudio = () => {
+        new Audio(audio).play();
     }
 
     render() {
@@ -95,7 +109,20 @@ class Game extends React.Component {
         console.log("test", this.state.status.indexOf("Next Player is"));
 
         if (this.state.status.indexOf("Next player is") === -1) {
-            return <h1 className="player">{this.state.status}  </h1>
+            if (this.state.status === "The winner is O" || this.state.status === "The winner is X") {
+                return (
+                    <div id="image-vainquer" className="container-fluid" >
+                        <h1 className="player">{this.state.status}</h1>
+                        <div className="rounded mx-auto d-block" >
+                            <img onMouseMove={this.playAudio} src="https://p3.storage.canalblog.com/39/25/624677/127227270.gif "
+                                alt="Gif feu d'artifice" />
+                        </div>
+
+                    </div>)
+            } else {
+                return <h1 className="player">{this.state.status}</h1>
+            }
+
         } else {
 
             const history = this.state.history
@@ -120,25 +147,6 @@ class Game extends React.Component {
             )
         }
     }
-
 }
 
 export default Game
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

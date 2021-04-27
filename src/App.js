@@ -1,36 +1,26 @@
 import React from "react";
 import Game from "./Components/Game"
 import "./App.css";
-
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 
 class App extends React.Component {
 
+  refreshPage() {
 
-
-  refreshPage(){
-
-   window.location.reload();
- }
+    window.location.reload();
+  }
 
   render() {
-
     return (
-     
-       
-      <div className = "bg-image"> 
-        
-        <button className = 'reset' type= 'button' onClick={this.refreshPage} >Restart Game</button>
-        <Game />
+      <div className="container-fluid p-3">
+        <div className="row">
+          <div className="btn btn-dark bg-image">
+            <button className='resetBtn m-4' type='button' onClick={this.refreshPage} >Restart</button>
+            <Game />
+          </div>
+        </div>
       </div>
-      
-     
-
-
     );
   }
 }
-
 export default App;
-
-
-
